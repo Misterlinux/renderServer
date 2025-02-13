@@ -14,7 +14,7 @@ const cors = require("cors");
 
 const corsOptions = {
   origin: "http://localhost:3000", 
-  methods: [`DELETE`,  `PUT`],
+  methods: [`DELETE`,  `PUT`, `POST`],
   allowedHeaders: ["Content-Type"],
   credentials: true
 };
