@@ -19,9 +19,8 @@ const corsOptions = {
   credentials: true
 };
 
-
 app.all('*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   if ('OPTIONS' == req.method) {
@@ -72,7 +71,7 @@ app.post("/hotels", function(req, res) {
 
   console.log("Datte", primo, secondo ) 
   //${primo}, ${Number(secondo)}
-  pool.query(`INSERT into multi (name, employed, age) VALUES ( '${primo}' , true, ${Number(secondo)} ) ` , 
+  pool.query(`INSERT into multi (name, employed, age) VALUES ( 'primgles' , true, 199 ) ` , 
     (error, result) => {
       console.log( result )
       res.json(result.rowCount);
