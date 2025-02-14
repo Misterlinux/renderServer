@@ -112,7 +112,7 @@ app.get("/remova/:index", async (req, res)=>{
 app.get("/", (req, res)=> {
   console.log( PORT )
 
-  res.send( HOST + PORT )
+  res.send( "Il valorante" )
 })
 
 app.get(`/metro`, (req, res)=> {
