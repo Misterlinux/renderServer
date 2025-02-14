@@ -18,6 +18,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"],
   credentials: true
 };
+
 /*
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -34,16 +35,9 @@ app.all('*', function(req, res, next) {
 app.use( cors(corsOptions) )
 app.use(express.json())
 
-//  mini.dpg-cun1gphu0jms73b9u8pg-a.frankfurt-postgres.render.com
-
-//postgresql://mini:KG1MnQCzJTxN19xi7fNxPfYwl8mMw6f4
-// @
-// dpg-cun1gphu0jms73b9u8pg-a.frankfurt-postgres.render.com
-// /renderserver_jjqh
-
 //We install the postSQL client pg
 const { Pool } = require("pg");
-//dpg-cun1gphu0jms73b9u8pg-a
+
 const connectionString = 
   `postgres://mini:${process.env.DATABASE_PASSWORD}@dpg-cun1gphu0jms73b9u8pg-a/renderserver_jjqh`;
 
@@ -77,12 +71,26 @@ app.post("/hotels", function(req, res) {
   );
 });
 
-app.get("/fila", (req, res)=>{
+app.get("/fila", async (req, res)=>{
   let nomefila = req.query.name
   let query;
 
+  //`select * from multi where nome like '%${nomefila}%' order by id;`
   if( nomefila ){
-     query = `select * from multi where nome like '%${nomefila}%' order by id;`
+     query = `select * from multi where nome like '%$1%' order by id;`
+  }
+
+  try{
+    const risulta = await pool.query(query, [nomefila])
+
+    if(risulta.rowCount){
+      res.status(202).send( result )
+    }else{
+      res.status(404).send( result )
+    }
+
+  }catch{
+    res.status(500).send("errorato")
   }
 
   console.log( "resulted query->", nomefila )
