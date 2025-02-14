@@ -112,7 +112,7 @@ app.get("/remova/:index", async (req, res)=>{
 app.get("/", (req, res)=> {
   console.log( PORT )
 
-  res.send( process.env.DATABASE_PASSWORD )
+  res.send( `postgres://mini:${process.env.DATABASE_PASSWORD}@dpg-cun1gphu0jms73b9u8pg-a/renderserver_jjqh` )
 })
 
 app.get(`/metro`, (req, res)=> {
