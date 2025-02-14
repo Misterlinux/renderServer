@@ -11,15 +11,15 @@ const PORT = process.env.PORT || 3020;
 /*const session = require('express-session');*/
 
 const cors = require("cors");
-/*
+
 const corsOptions = {
   origin: "http://localhost:3000", 
   methods: [`DELETE`,  `PUT`, `POST`],
   allowedHeaders: ["Content-Type"],
   credentials: true
 };
-*/
 
+/*
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -30,6 +30,7 @@ app.all('*', function(req, res, next) {
     next();
   }
 });
+*/
 
 app.use( cors(corsOptions) )
 
