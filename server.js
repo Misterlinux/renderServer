@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3020;
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "http://localhost:3000", 
+  origin: "*", 
   methods: [`DELETE`,  `PUT`, `POST`],
   allowedHeaders: ["Content-Type"],
   credentials: true
