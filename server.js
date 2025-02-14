@@ -49,6 +49,7 @@ const { Pool } = require("pg");
 const connectionString = 
   `postgres://mini:${process.env.DATABASE_PASSWORD}@dpg-cun1gphu0jms73b9u8pg-a/renderserver_jjqh`;
 
+
 const pool = new Pool({
   connectionString,
 });
