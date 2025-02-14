@@ -32,7 +32,6 @@ app.all('*', function(req, res, next) {
 */
 
 app.use( cors(corsOptions) )
-
 app.use(express.json())
 
 //  mini.dpg-cun1gphu0jms73b9u8pg-a.frankfurt-postgres.render.com
@@ -47,7 +46,6 @@ const { Pool } = require("pg");
 //dpg-cun1gphu0jms73b9u8pg-a
 const connectionString = 
   `postgres://mini:${process.env.DATABASE_PASSWORD}@dpg-cun1gphu0jms73b9u8pg-a/renderserver_jjqh`;
-
 
 const pool = new Pool({
   connectionString,
@@ -71,7 +69,7 @@ app.post("/hotels", function(req, res) {
 
   console.log("Datte", primo, secondo ) 
   //${primo}, ${Number(secondo)}
-  pool.query(`INSERT into multi (name, employed, age) VALUES ( 'primgles' , true, 199 ) ` , 
+  pool.query(`INSERT into multi (name, employed, age) VALUES ( '${primo}' , true, ${Number(secondo)} ) ` , 
     (error, result) => {
       console.log( result )
       res.json(result.rowCount);
