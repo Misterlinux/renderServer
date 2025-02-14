@@ -112,7 +112,7 @@ app.get("/remova/:index", async (req, res)=>{
 app.get("/", (req, res)=> {
   console.log( PORT )
 
-  res.send( "Il valorante" )
+  res.send( process.env.DATABASE_PASSWORD )
 })
 
 app.get(`/metro`, (req, res)=> {
